@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const Nav = styled.nav`
     width: 100vw;
     height: 70px;
-    font-family: 'Roboto', sans-serif;
     position: fixed;
     top: 0;
     left: 0;
