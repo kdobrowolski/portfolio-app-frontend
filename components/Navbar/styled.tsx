@@ -7,6 +7,7 @@ export const Nav = styled.nav`
     top: 0;
     left: 0;
     background-color: white;
+    z-index: 99999 !important;
 `;
 
 export const Logo = styled.span`

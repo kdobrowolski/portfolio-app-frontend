@@ -8,7 +8,7 @@ export const StyledHeader = styled.header`
 
 export const StyledBanner = styled.div`
     position: relative;
-    top: 125px;
+    top: 150px;
     width: 80vw;
     margin: auto;
 
