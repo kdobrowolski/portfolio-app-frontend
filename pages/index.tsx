@@ -4,6 +4,7 @@ import Image from 'next/image'
 import About from '../components/About/About'
 import Header from '../components/Header/Header'
 import Navbar from '../components/Navbar/Navbar'
+import Skills from '../components/Skills/Skills'
 import Layout from '../constants/Layout'
 import styles from '../styles/Home.module.css'
 
@@ -24,6 +25,7 @@ const Home: NextPage = () => {
             <Navbar />
             <Header />
             <About />
+            <Skills />
         </Layout>
       </main>
 

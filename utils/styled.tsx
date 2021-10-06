@@ -6,8 +6,9 @@ export const StyledSectionTitle = styled.div`
     margin-left: 10px !important;
     font-size: 1.5rem;
     position: relative;
-    margin-left: 10px;
+    margin-left: ${props => props.right ? "0" : "10px"};
     margin-top: 30px;
+    text-align: ${props => props.right ? "right" : "left"};
 
     &:after {
         content: '';
@@ -17,12 +18,18 @@ export const StyledSectionTitle = styled.div`
         position: absolute;
         display: block;
         top: 0;
-        left: -10px;
+        left: ${props => props.right ? "inherit" : "-10px"};
+        right: ${props => props.right ? "0px" : "inherit"};
     }
 
     p {
         margin: 0;
         font-size: .8rem !important;
         color: #666666;
+    }
+
+    span, p {
+        display: block;
+        margin-right: ${props => props.right ? "10px" : "0"};
     }
 `;
