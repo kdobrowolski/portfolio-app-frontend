@@ -16,6 +16,9 @@ export const StyledPhoto = styled.div`
     background-color: blue;
     margin: auto;
     margin-top: 30px;
+    background-image: url("./images/myphoto.jpg");
+    background-position: center;
+    background-size: cover;
 `;
 
 export const StyledDescription = styled.div`

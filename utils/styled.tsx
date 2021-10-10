@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledSectionTitle = styled.div`
+export const StyledSectionTitle = styled.div<{right?: Boolean}>`
     color: #6574FE;
     font-weight: bold;
     margin-left: 10px !important;
