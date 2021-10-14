@@ -17,6 +17,28 @@ export const Nav = styled.nav`
         margin: 0 auto;
         height: 70px;
 
+        .openedNav {
+            display: block;
+            float: none;
+            text-align: center;
+            padding: 0;
+            top: 50px;
+            li {
+                margin-right: 0;
+                display: block;
+                font-size: 2rem;
+                margin-top: 30px;
+            }
+        }
+
+        .closeIcon {
+            font-size: 2.5rem;
+            position: absolute;
+            top: 10px;
+            right: 13%;
+            display: none;
+        }
+
         @media only screen and ${breakpoint.device.lg} {
             width: 90%;
         }
