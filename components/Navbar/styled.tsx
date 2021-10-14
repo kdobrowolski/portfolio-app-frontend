@@ -50,7 +50,7 @@ export const Nav = styled.nav`
 
     @media only screen and ${breakpoint.device.md} {
         .nav-content > .navListIcon {
-            display: none;
+            display: none !important;
         }
     }
 `;
