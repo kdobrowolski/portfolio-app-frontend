@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import breakpoint from './breakpoints';
 
 export const StyledSectionTitle = styled.div<{right?: Boolean}>`
     color: #6574FE;
@@ -31,5 +32,18 @@ export const StyledSectionTitle = styled.div<{right?: Boolean}>`
     span, p {
         display: block;
         margin-right: ${props => props.right ? "10px" : "0"};
+    }
+
+    @media only screen and ${breakpoint.device.xl} {
+        font-size: 2rem;
+
+        p {
+            font-size: 1rem !important;
+        }
+
+        &:after {
+            top: 3px;
+            height: 30px;
+        }
     }
 `;

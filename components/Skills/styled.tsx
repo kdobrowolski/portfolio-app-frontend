@@ -1,7 +1,9 @@
 import styled from 'styled-components';
+import breakpoint from '../../utils/breakpoints';
 
 export const StyledSkills = styled.section`
     width: 100vw;
+    max-width: 100%;
     background-color: #FAFAFA;
     padding-top: 1px;
     padding-bottom: 30px;
@@ -17,10 +19,26 @@ export const StyledSkills = styled.section`
             color: #6C6C6C;
             margin-top: 30px;
             margin-bottom: 0;
-
+            padding: 0;
             li {
-                margin-top: 10px;
+                margin: 20px;
+                margin-top: 15px;
             }
+        }
+
+        @media only screen and ${breakpoint.device.md} {
+            ul {
+                display: flex;
+                flex-wrap: wrap;
+            }
+        }
+
+        @media only screen and ${breakpoint.device.lg} {
+            width: 70%;
+        }
+
+        @media only screen and ${breakpoint.device.xl} {
+            width: 50%;
         }
     }
 `;
