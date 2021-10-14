@@ -3,7 +3,6 @@ import breakpoint from '../../utils/breakpoints';
 
 export const Nav = styled.nav`
     width: 100vw;
-    height: 70px;
     max-width: 100%;
     position: fixed;
     top: 0;
@@ -16,20 +15,6 @@ export const Nav = styled.nav`
         width: 80%;
         margin: 0 auto;
         height: 70px;
-
-        .openedNav {
-            display: block;
-            float: none;
-            text-align: center;
-            padding: 0;
-            top: 50px;
-            li {
-                margin-right: 0;
-                display: block;
-                font-size: 2rem;
-                margin-top: 30px;
-            }
-        }
 
         .closeIcon {
             font-size: 2.5rem;
@@ -45,6 +30,32 @@ export const Nav = styled.nav`
 
         @media only screen and ${breakpoint.device.xl} {
             width: 70%;
+        }
+    }
+
+    .openedNav {
+        height: 100vh;
+        .navList {
+            display: block;
+            float: none;
+            text-align: center;
+            padding: 0;
+            top: 50px;
+            li {
+                margin-right: 0;
+                display: block;
+                font-size: 2rem;
+                margin-top: 30px;
+            }
+        }
+        .closeIcon {
+            display: block;
+        }
+        .logo {
+            float: none;
+        }
+        .navListIcon {
+            display: none;
         }
     }
 
