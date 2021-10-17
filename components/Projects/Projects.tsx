@@ -3,7 +3,7 @@ import { StyledSectionTitle } from '../../utils/styled';
 
 export default function Projects() {
     return (
-        <StyledProjects>
+        <StyledProjects id="projects">
             <div className="container">
                 <StyledSectionTitle right>
                     <span>Projekty</span>

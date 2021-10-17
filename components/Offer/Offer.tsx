@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export default function Offer() {
     return (
-        <StyledOffer>
+        <StyledOffer id="offer">
             <div className="container">
                 <StyledSectionTitle>
                     Moje usługi

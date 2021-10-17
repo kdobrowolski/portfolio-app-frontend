@@ -3,7 +3,7 @@ import { StyledSectionTitle } from '../../utils/styled';
 
 export default function About() {
     return (
-        <StyledAbout>
+        <StyledAbout id="about">
             <div className="container">
                 <StyledSectionTitle>
                     O mnie

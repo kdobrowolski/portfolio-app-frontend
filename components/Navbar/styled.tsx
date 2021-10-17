@@ -41,7 +41,7 @@ export const Nav = styled.nav`
             text-align: center;
             padding: 0;
             top: 50px;
-            li {
+            a {
                 margin-right: 0;
                 display: block;
                 font-size: 2rem;
@@ -66,11 +66,15 @@ export const Nav = styled.nav`
     }
 `;
 
-export const Logo = styled.span`
+export const Logo = styled.div`
     display: block;
     font-size: 2.5rem;
     margin-top: 10px;
     float: left;
+
+    &:hover {
+        cursor: pointer;
+    }
 `;
 
 export const StyledNavList = styled.ul`
@@ -79,9 +83,13 @@ export const StyledNavList = styled.ul`
     display: none;
     margin: 0;
     float: right;
-    li {
+    a {
         display: inline-block;
         margin-right: 20px;
+
+        &:hover {
+            cursor: pointer;
+        }
     }
 
     @media only screen and ${breakpoint.device.md} {

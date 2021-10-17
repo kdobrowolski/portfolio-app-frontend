@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export default function Header() {
     return (
-        <StyledHeader>
+        <StyledHeader id="header">
             <StyledBanner>
                 <span className="upper-text">Hej, jestem Kacper</span>
                 <h1>Frontend Web Developer</h1>
