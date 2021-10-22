@@ -37,7 +37,7 @@ const StyledEnvelope = styled(BsEnvelopeFill)`
 
 export default function Contact() {
     return (
-        <StyledContact>
+        <StyledContact id="contact">
             <div className="container">
                 <StyledSectionTitle>
                     Skontaktuj się ze mną

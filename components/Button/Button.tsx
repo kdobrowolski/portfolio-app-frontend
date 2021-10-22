@@ -1,13 +1,20 @@
 import { StyledButton } from './styled';
+import { Link } from "react-scroll";
 
 type Props = {
-    content: string
+    content: string,
+    toScroll?: string
 }
 
-export default function Button({ content }: Props) {
+export default function Button({ content, toScroll }: Props) {
+    if(toScroll == undefined || null) {
+        return <StyledButton> {content} </StyledButton>
+    }
     return (
-        <StyledButton>
-            { content }
-        </StyledButton>
+        <Link to={toScroll} smooth={true} duration={500}>
+            <StyledButton>
+                { content }
+            </StyledButton>
+        </Link>
     )
 }

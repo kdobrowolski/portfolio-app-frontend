@@ -10,4 +10,8 @@ export const StyledButton = styled.button`
     font-size: 1rem;
     letter-spacing: 1px;
     margin-top: 20px;
+
+    &:hover {
+        cursor: pointer;
+    }
 `;
