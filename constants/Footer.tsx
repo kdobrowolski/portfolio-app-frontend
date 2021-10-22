@@ -12,8 +12,8 @@ const StyledFooter = styled.footer`
         padding: 0;
         margin: 0;
         margin-left: 30px;
-        list-style: none;
         padding-top: 10px;
+        list-style: none;
         & > li {
             margin-top: 15px;
             & > a:hover {
@@ -22,8 +22,8 @@ const StyledFooter = styled.footer`
         }
 
         @media only screen and ${breakpoint.device.sm} {
-            float: left;
             width: 50%;
+            float: left;
             display: block;
             margin-left: 0;
             text-align: center;
@@ -36,21 +36,21 @@ const StyledFooter = styled.footer`
         }
 
         @media only screen and ${breakpoint.device.sm} {
-            float: left;
             width: 50%;
+            float: left;
         }
     }
     & > .copyright {
         margin: 0;
         margin-left: 30px;
         margin-top: 30px;
-        font-size: .8rem;
         padding-bottom: 20px;
+        font-size: .8rem;
 
         @media only screen and ${breakpoint.device.sm} {
+            width: 100%;
             display: inline-block;
             margin-top: 30px;
-            width: 100%;
             margin-left: 0;
             text-align: center;
             & > p {
@@ -61,13 +61,13 @@ const StyledFooter = styled.footer`
 `;
 
 const StyledFbIcon = styled(BsFacebook)`
-    font-size: 2rem;
     margin-left: 30px;
+    font-size: 2rem;
 `;
 
 const StyledGithubIcon = styled(BsGithub)`
-    font-size: 2rem;
     margin-left: 30px;
+    font-size: 2rem;
 `;
 
 export default function Footer() {

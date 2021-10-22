@@ -6,14 +6,14 @@ export const StyledOffer = styled.section`
     max-width: 100%;
 
     .container {
+        position: relative;
         width: 80%;
         margin: auto;
         padding-bottom: 20px;
-        position: relative;
 
         .offerElement {
-            text-align: center;
             margin-top: 60px;
+            text-align: center;
 
             .offer-content {
                 h3 {
@@ -40,8 +40,8 @@ export const StyledOffer = styled.section`
                 }
 
                 .offer-content {
-                    margin-left: 100px;
                     width: 300px;
+                    margin-left: 100px;
 
                     h3 {
                         font-size: 1.5rem;
@@ -55,7 +55,6 @@ export const StyledOffer = styled.section`
             .offerElement:nth-child(3) {
                 .offer-image {
                     order: 2;
-                    position: absolute;
                     right: 0;
                 }
                 .offer-content {

@@ -8,13 +8,13 @@ export const StyledHeader = styled.header`
     background-color: #FAFAFA;
 
     .banner-image {
-        float: right;
         display: none;
+        float: right;
 
         @media only screen and ${breakpoint.device.lg} {
+            display: block;
             margin-right: 5%;
             margin-top: 75px;
-            display: block;
         }
         @media only screen and ${breakpoint.device.xl} {
             margin-right: 15%;
@@ -32,17 +32,17 @@ export const StyledHeader = styled.header`
 
 export const StyledBanner = styled.div`
     position: relative;
-    top: 150px;
     width: 80vw;
+    top: 150px;
     margin: auto;
 
     .upper-text {
+        position: relative;
+        display: block;
+        top: 15px;
         color: #6574FE;
         font-weight: bold;
         font-size: 1.5rem;
-        display: block;
-        position: relative;
-        top: 15px;
     }
 
     h1 {
@@ -58,8 +58,8 @@ export const StyledBanner = styled.div`
 
     @media only screen and ${breakpoint.device.lg} {
         width: 40%;
-        margin-left: 5%;
         float: left;
+        margin-left: 5%;
 
         .upper-text {
             font-size: 2rem !important;

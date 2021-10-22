@@ -29,19 +29,19 @@ export const StyledAbout = styled.section`
 export const StyledPhoto = styled.div`
     width: 100px;
     height: 100px;
-    border-radius: 100%;
-    background-color: blue;
     margin: auto;
     margin-top: 30px;
+    border-radius: 100%;
+    background-color: blue;
     background-image: url("./images/myphoto.jpg");
     background-position: center;
     background-size: cover;
 
     @media only screen and ${breakpoint.device.md} {
+        position: relative;
         flex-grow: 0;
         flex-shrink: 0;
         flex-basis: 100px;
-        position: relative;
     }
 
     @media only screen and ${breakpoint.device.xl} {
@@ -52,9 +52,9 @@ export const StyledPhoto = styled.div`
 `;
 
 export const StyledDescription = styled.div`
-    color: #6C6C6C;
     margin-top: 30px;
     margin-bottom: 30px;
+    color: #6C6C6C;
 
     .text-bold {
         color: #6574FE;

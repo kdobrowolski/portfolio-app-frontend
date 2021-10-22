@@ -29,8 +29,8 @@ export const StyledContact = styled.section`
 
 export const StyledContactInfo = styled.div`
     width: 100%;
-    text-align: center;
     margin-top: 40px;
+    text-align: center;
 
     & > h3 {
         margin: 0;
@@ -46,10 +46,10 @@ export const StyledContactInfo = styled.div`
     }
 
     @media only screen and ${breakpoint.device.md} {
+        position: relative;
         width: 30%;
         order: 1;
         margin: 0;
-        position: relative;
 
         & > h3 {
             font-size: 1rem;
@@ -60,13 +60,13 @@ export const StyledContactInfo = styled.div`
         }
 
         &:after {
-            content: "";
             position: absolute;
-            right: 0;
+            content: "";
             height: 70%;
             width: 2px;
-            background-color: #6c6c6c;
+            right: 0;
             top: 15%;
+            background-color: #6c6c6c;
         }
     }
 `;
@@ -83,9 +83,13 @@ export const StyledContactForm = styled.div`
              border-radius: 5px;
          }
          & > textarea {
-             resize: none;
-             height: 150px;
-             font-family: 'Roboto', sans-serif;
+            height: 150px;
+            resize: none;
+            font-family: 'Roboto', sans-serif;
+         }
+         & > .error {
+             margin-bottom: 0;
+             color: red;
          }
      }
 
@@ -96,8 +100,8 @@ export const StyledContactForm = styled.div`
 
         & > form {
             width: 70%;
-            text-align: center;
             margin: 0 auto;
+            text-align: center;
         }
     }
 `;

@@ -4,6 +4,10 @@ import { BsGeoAltFill, BsTelephoneFill, BsEnvelopeFill } from 'react-icons/bs';
 import styled from 'styled-components';
 import Button from '../Button/Button';
 import breakpoint from '../../utils/breakpoints';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
+import 'yup-phone';
 
 const StyledGeoAlt = styled(BsGeoAltFill)`
     color: #6574FE;
@@ -35,7 +39,28 @@ const StyledEnvelope = styled(BsEnvelopeFill)`
     }
 `;
 
+const phoneRegExp = /^([0-9]{9})$/;
+
+const schema = yup.object().shape({
+    name: yup.string()
+        .required("Imię i nazwisko jest wymagane!"),
+    email: yup.string()
+        .email("Nieprawidłowy email!")
+        .required("Email jest wymagany!"),
+    phone: yup.string()
+        .matches(phoneRegExp, 'Nieprawidłowy numer telefonu!')
+        .required(),
+    msg: yup.string()
+        .required("Wiadomość jest wymagana!"),
+  }).required();
+
 export default function Contact() {
+    const { register, handleSubmit, formState:{ errors } } = useForm({
+        resolver: yupResolver(schema),
+    });
+    const onSubmit = () => {
+        console.log('da');
+    }
     return (
         <StyledContact id="contact">
             <div className="container">
@@ -45,11 +70,15 @@ export default function Contact() {
                 </StyledSectionTitle>
                 <div className="content">
                     <StyledContactForm>
-                        <form>
-                            <input type="text" name="name" placeholder="Imię i nazwisko"/>
-                            <input type="email" name="email" placeholder="Adres email"/>
-                            <input type="number" name="phone" placeholder="Numer telefonu"/>
-                            <textarea name="msg" placeholder="Wiadomość" />
+                        <form onSubmit={handleSubmit(onSubmit)}>
+                            <input {...register('name')} type="text" name="name" placeholder="Imię i nazwisko"/>
+                            <p className="error">{errors.name?.message}</p>
+                            <input {...register('email')} type="email" name="email" placeholder="Adres email"/>
+                            <p className="error">{errors.email?.message}</p>
+                            <input {...register('phone')} type="text" name="phone" placeholder="Numer telefonu"/>
+                            <p className="error">{errors.phone?.message}</p>
+                            <textarea {...register('msg')} name="msg" placeholder="Wiadomość" />
+                            <p className="error">{errors.msg?.message}</p>
                             <Button content="Wyślij" />
                         </form>
                     </StyledContactForm>

@@ -5,10 +5,10 @@ import { BsList } from 'react-icons/bs';
 import { Link } from "react-scroll";
 
 const StyledBsList = styled(BsList)`
-    font-size: 3rem;
-    float: right;
     display: block;
+    float: right;
     margin-top: 10px;
+    font-size: 3rem;
 `;
 
 export default function Navbar() {

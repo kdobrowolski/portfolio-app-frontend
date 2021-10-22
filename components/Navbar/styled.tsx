@@ -2,26 +2,26 @@ import styled from 'styled-components';
 import breakpoint from '../../utils/breakpoints';
 
 export const Nav = styled.nav`
+    position: fixed;
     width: 100vw;
     max-width: 100%;
-    position: fixed;
     top: 0;
     left: 0;
-    background-color: white;
     z-index: 99999 !important;
+    background-color: white;
     border-bottom: 2px solid #FAFAFA;
 
     .nav-content {
         width: 80%;
-        margin: 0 auto;
         height: 70px;
+        margin: 0 auto;
 
         .closeIcon {
-            font-size: 2.5rem;
             position: absolute;
             top: 10px;
             right: 13%;
             display: none;
+            font-size: 2.5rem;
         }
 
         @media only screen and ${breakpoint.device.lg} {
@@ -38,14 +38,14 @@ export const Nav = styled.nav`
         .navList {
             display: block;
             float: none;
-            text-align: center;
-            padding: 0;
             top: 50px;
+            padding: 0;
+            text-align: center;
             a {
-                margin-right: 0;
                 display: block;
-                font-size: 2rem;
+                margin-right: 0;
                 margin-top: 30px;
+                font-size: 2rem;
             }
         }
         .closeIcon {
@@ -68,9 +68,9 @@ export const Nav = styled.nav`
 
 export const Logo = styled.div`
     display: block;
-    font-size: 2.5rem;
-    margin-top: 10px;
     float: left;
+    margin-top: 10px;
+    font-size: 2.5rem;
 
     &:hover {
         cursor: pointer;
@@ -79,10 +79,10 @@ export const Logo = styled.div`
 
 export const StyledNavList = styled.ul`
     position: relative;
-    top: 25px;
     display: none;
-    margin: 0;
     float: right;
+    top: 25px;
+    margin: 0;
     a {
         display: inline-block;
         margin-right: 20px;

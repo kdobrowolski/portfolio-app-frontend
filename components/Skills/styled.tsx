@@ -13,13 +13,13 @@ export const StyledSkills = styled.section`
         margin: auto;
 
         ul {
+            margin-top: 30px;
+            margin-bottom: 0;
+            padding: 0;
             list-style: none;
             text-align: center;
             font-weight: 500;
             color: #6C6C6C;
-            margin-top: 30px;
-            margin-bottom: 0;
-            padding: 0;
             li {
                 margin: 20px;
                 margin-top: 15px;
