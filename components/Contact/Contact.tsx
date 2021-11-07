@@ -8,6 +8,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import 'yup-phone';
+import { ContactSchema } from '../../helpers/yupSchemas';
 
 const StyledGeoAlt = styled(BsGeoAltFill)`
     color: #6574FE;
@@ -39,24 +40,9 @@ const StyledEnvelope = styled(BsEnvelopeFill)`
     }
 `;
 
-const phoneRegExp = /^([0-9]{9})$/;
-
-const schema = yup.object().shape({
-    name: yup.string()
-        .required("Imię i nazwisko jest wymagane!"),
-    email: yup.string()
-        .email("Nieprawidłowy email!")
-        .required("Email jest wymagany!"),
-    phone: yup.string()
-        .matches(phoneRegExp, 'Nieprawidłowy numer telefonu!')
-        .required(),
-    msg: yup.string()
-        .required("Wiadomość jest wymagana!"),
-  }).required();
-
 export default function Contact() {
     const { register, handleSubmit, formState:{ errors } } = useForm({
-        resolver: yupResolver(schema),
+        resolver: yupResolver(ContactSchema),
     });
     const onSubmit = () => {
         console.log('da');
