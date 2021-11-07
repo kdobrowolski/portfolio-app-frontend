@@ -8,11 +8,11 @@ import Offer from '../components/Offer/Offer'
 import Projects from '../components/Projects/Projects'
 import Skills from '../components/Skills/Skills'
 import Layout from '../constants/Layout'
-import styles from '../styles/Home.module.css'
+import Footer from '../constants/Footer';
 
 const Home: NextPage = () => {
   return (
-    <div className={styles.container}>
+    <div className="container">
       <Head>
         <title>Kacper Dobrowolski - Front-End Developer</title>
         <meta name="description" content="Strona portfolio - Kacper Dobrowolski" />
@@ -22,7 +22,7 @@ const Home: NextPage = () => {
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"></link>
       </Head>
 
-      <main className={styles.main}>
+      <main className="main">
         <Layout>
             <Navbar />
             <Header />
@@ -33,10 +33,7 @@ const Home: NextPage = () => {
             <Contact />
         </Layout>
       </main>
-
-      <footer className={styles.footer}>
-        
-      </footer>
+      <Footer />
     </div>
   )
 }
