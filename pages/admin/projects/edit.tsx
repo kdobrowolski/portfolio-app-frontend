@@ -49,7 +49,7 @@ const AdminProjectAdd: NextPage = () => {
             </Head>
 
             <StyledMain className={styles.main}>
-                <h2>Dodaj projekt</h2>
+                <h2>Edytuj projekt</h2>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <label htmlFor="name">Nazwa projektu</label>
                     <input {...register('name')} type="text" name="name" />
@@ -63,7 +63,7 @@ const AdminProjectAdd: NextPage = () => {
                     <label htmlFor="image">Główne zdjęcie</label>
                     <input {...register('image')} type="file" name="image"/>
                     <p className="error">{errors.image?.message}</p>
-                    <Button content="Dodaj" />
+                    <Button content="Zmień" />
                 </form>
                 <Button route="/admin/projects" content="Wróć" />
             </StyledMain>

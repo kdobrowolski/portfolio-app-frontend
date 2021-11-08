@@ -17,9 +17,10 @@ const AdminProjects: NextPage = () => {
 
             <main className={styles.main}>
                 <h2>Projekty</h2>
-                <Button content="Dodaj projekt" />
+                <Button route="/admin/projects/add" content="Dodaj projekt" />
                 <AdminProject />
                 <AdminProject />
+                <Button route="/admin/dashboard" content="Wróć"/>
             </main>
         </div>
     )

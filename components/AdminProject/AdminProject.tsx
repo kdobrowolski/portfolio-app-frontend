@@ -9,7 +9,8 @@ export default function AdminProject() {
             <h3>Portfolio App</h3>
             <p>Moja prywatna strona do portfolio</p>
             <p>01.11.2021r.</p>
-            <Button content="Edytuj projekt" />
+            <Button route="/admin/projects/gallery" content="Galeria" />
+            <Button route="/admin/projects/edit" content="Edytuj projekt" />
             <Button content="Usun projekt" />
         </StyledProjectContainer>
     )

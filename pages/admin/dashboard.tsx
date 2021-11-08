@@ -16,7 +16,7 @@ const AdminDashboard: NextPage = () => {
 
             <main className={styles.main}>
                 <h2>Admin panel</h2>
-                <Button content="Zarządzaj projektami" />
+                <Button route="/admin/projects" content="Zarządzaj projektami" />
                 <Button content="Wyloguj się" />
             </main>
         </div>
