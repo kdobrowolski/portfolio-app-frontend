@@ -8,7 +8,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import 'yup-phone';
-import { ContactSchema } from '../../helpers/yupSchemas';
+import { ContactSchema } from '../../utils/yupSchemas';
 
 const StyledGeoAlt = styled(BsGeoAltFill)`
     color: #6574FE;

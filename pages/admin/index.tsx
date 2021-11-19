@@ -1,7 +1,12 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import SignInForm from '../../components/SignInForm/SignInForm';
-import styles from '../../styles/Admin.module.css';
+import styled from 'styled-components';
+
+const StyledMain = styled.main`
+    margin-top: 120px;
+    text-align: center;
+`;
 
 const AdminPage: NextPage = () => {
     return (
@@ -14,10 +19,10 @@ const AdminPage: NextPage = () => {
                 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"></link>
             </Head>
 
-            <main className={styles.main}>
+            <StyledMain>
                 <h2>Zaloguj się do panelu administratora</h2>
                 <SignInForm />
-            </main>
+            </StyledMain>
         </div>
     )
 }

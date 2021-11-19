@@ -1,6 +1,5 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import styles from '../../../styles/AdminProjectAdd.module.css';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Button from '../../../components/Button/Button';
@@ -8,6 +7,7 @@ import styled from 'styled-components';
 import { ProjectSchema } from '../../../utils/yupSchemas';
 
 const StyledMain = styled.main`
+    text-align: center;
     padding-bottom: 30px;    
 
     form {
@@ -48,7 +48,7 @@ const AdminProjectAdd: NextPage = () => {
                 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"></link>
             </Head>
 
-            <StyledMain className={styles.main}>
+            <StyledMain>
                 <h2>Dodaj projekt</h2>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <label htmlFor="name">Nazwa projektu</label>

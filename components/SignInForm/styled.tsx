@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import breakpoint from '../../utils/breakpoints';
 
 export const StyledForm = styled.form`
     width: 60%;
@@ -20,5 +21,15 @@ export const StyledForm = styled.form`
         color: #6c6c6c;
         font-size: .9rem;
         text-align: left;
+    }
+
+    @media only screen and ${breakpoint.device.sm} {
+        width: 50%;
+    }
+    @media only screen and ${breakpoint.device.md} {
+        width: 40%;
+    }
+    @media only screen and ${breakpoint.device.lg} {
+        width: 25%;
     }
 `;

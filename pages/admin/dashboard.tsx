@@ -1,7 +1,15 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Button from '../../components/Button/Button';
-import styles from '../../styles/AdminDashboard.module.css';
+import styled from 'styled-components';
+
+const StyledMain = styled.main`
+    margin-top: 100px;
+    text-align: center;
+    button {
+        width: 60%;
+    }
+`;
 
 const AdminDashboard: NextPage = () => {
     return (
@@ -14,11 +22,11 @@ const AdminDashboard: NextPage = () => {
                 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"></link>
             </Head>
 
-            <main className={styles.main}>
+            <StyledMain>
                 <h2>Admin panel</h2>
                 <Button route="/admin/projects" content="Zarządzaj projektami" />
                 <Button content="Wyloguj się" />
-            </main>
+            </StyledMain>
         </div>
     )
 }
