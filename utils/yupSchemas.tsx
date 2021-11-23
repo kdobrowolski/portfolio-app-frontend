@@ -17,7 +17,7 @@ export const ProjectSchema = yup.object().shape({
         return value && value[0] && value[0].size <= 200000;
         })
         .test("type", "Zły format pliku", function (value) {
-        return value && value[0] && value[0].type === "image/jpeg";
+        return value && value[0] && value[0].type === "image/jpeg" || "image/png";
         }),
 });
 

@@ -1,16 +1,17 @@
 import type { NextPage, GetServerSideProps } from 'next';
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import Button from '../../../components/Button/Button';
+import Button from '../../../../components/Button/Button';
 import styled from 'styled-components';
-import { ProjectSchema } from '../../../utils/yupSchemas';
+import { ProjectSchema } from '../../../../utils/yupSchemas';
 import axios from 'axios';
 
 const StyledMain = styled.main`
+    padding-bottom: 30px;
     text-align: center;
-    padding-bottom: 30px;    
 
     form {
         label {
@@ -28,14 +29,15 @@ const StyledMain = styled.main`
         .error {
             color: red;
         }
-        .hidden {
-            display: none;
-        }
-    
-        .success {
-            color: green;
-            display: block !important;
-        }
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .success {
+        color: green;
+        display: block !important;
     }
 `;
 
@@ -44,11 +46,14 @@ interface Props {
 }
 
 const AdminProjectAdd: NextPage<Props> = ({ api }) => {
+    const router = useRouter()
+    const { id } = router.query;
     const [title, setTitle] = useState("");
     const [desc, setDesc] = useState("");
     const [date, setDate] = useState("");
     const [mainImage, setMainImage] = useState("");
     const [success, setSuccess] = useState(false);
+
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(ProjectSchema)
     })
@@ -59,7 +64,7 @@ const AdminProjectAdd: NextPage<Props> = ({ api }) => {
         formData.append('description', desc);
         formData.append('date', date);
         formData.append('mainImage', mainImage);
-        const res = await axios.post(api + "/api/projects", formData, {
+        const res = await axios.put(api + "/api/projects/" + id, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
               }
@@ -75,12 +80,13 @@ const AdminProjectAdd: NextPage<Props> = ({ api }) => {
                 <title>Kacper Dobrowolski - Admin Panel</title>
                 <meta name="description" content="Strona portfolio - Kacper Dobrowolski" />
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
                 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"></link>
             </Head>
 
             <StyledMain>
-                <h2>Dodaj projekt</h2>
+                <h2>Edytuj projekt</h2>
+                <p></p>
                 <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
                     <label htmlFor="name">Nazwa projektu</label>
                     <input {...register('name')} onChange={e => { setTitle(e.currentTarget.value); }} id="title" type="text" name="name" />
@@ -94,8 +100,8 @@ const AdminProjectAdd: NextPage<Props> = ({ api }) => {
                     <label htmlFor="image">Główne zdjęcie</label>
                     <input {...register('image')} onChange={e => { setMainImage(e.currentTarget.files[0]); }} id="mainImage" type="file" name="image"/>
                     <p className="error">{errors.image?.message}</p>
-                    <p className={success ? "success" : "hidden"}>Dodano pomyślnie!</p>
-                    <Button content="Dodaj" />
+                    <p className={success ? "success" : "hidden"}>Edycja powiodła się!</p>
+                    <Button content="Zmień" />
                 </form>
                 <Button route="/admin/projects" content="Wróć" />
             </StyledMain>

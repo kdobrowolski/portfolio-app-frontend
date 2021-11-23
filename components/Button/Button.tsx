@@ -5,17 +5,18 @@ import { Link as Scroll } from 'react-scroll';
 type Props = {
     content: string,
     toScroll?: string,
-    route?: string
+    route?: string,
+    onClickFunction?: any
 }
 
-export default function Button({ content, toScroll, route }: Props) {
+export default function Button({ content, toScroll, route, onClickFunction }: Props) {
     if(route) {
         return <Link href={route}>
             <StyledButton> {content} </StyledButton>
         </Link>
     }
     if(toScroll == undefined || null) {
-        return <StyledButton> {content} </StyledButton>
+        return <StyledButton onClick={onClickFunction}> {content} </StyledButton>
     }
     return (
         <Scroll to={toScroll} smooth={true} duration={500}>
