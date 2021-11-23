@@ -45,7 +45,7 @@ interface Props {
     api: string
 }
 
-const AdminProjectAdd: NextPage<Props> = ({ api }) => {
+const AdminProjectEdit: NextPage<Props> = ({ api }) => {
     const router = useRouter()
     const { id } = router.query;
     const [title, setTitle] = useState("");
@@ -117,4 +117,4 @@ export const getServerSideProps: GetServerSideProps = async () => {
     }
 }
 
-export default AdminProjectAdd
+export default AdminProjectEdit

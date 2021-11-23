@@ -14,11 +14,31 @@ const StyledDiv = styled.div`
     }
 `;
 
-export default function GalleryImage() {
+interface Props {
+    image: any,
+    itemID: string,
+    api: string,
+    projectID: string
+}
+
+export default function GalleryImage({ image, itemID, projectID, api }: Props) {
+    console.log(image);
+    const buffer = image.image.data;
+    const b64 = Buffer.from(buffer).toString("base64");
+    const mimeType = 'image/png';
+
+    const deleteImage = async () => {
+        const res = await fetch(api + "/api/projects/" + projectID + "/images/" + itemID, { method: "DELETE" })
+        const json = await res.json()
+        if(json.success) {
+            window.location.reload();
+        }
+    }
+
     return (
         <StyledDiv className="gallery-image">
-            <Image width="200px" height="150px" src="/images/coding.png" /> 
-            <Button content="Usuń" />
+            <Image height="200px" width="200px" src={`data:${mimeType};base64,${b64}`} />
+            <Button content="Usuń" onClickFunction={deleteImage}/>
         </StyledDiv>
     )
 }
