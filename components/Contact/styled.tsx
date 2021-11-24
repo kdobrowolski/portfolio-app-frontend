@@ -25,6 +25,15 @@ export const StyledContact = styled.section`
             width: 50%;
         }
     }
+
+    .success {
+        color: green;
+        display: block !important;
+    }
+
+    .hidden {
+        display: none;
+    }
 `;
 
 export const StyledContactInfo = styled.div`

@@ -1,4 +1,4 @@
-import type { NextPage } from 'next'
+import type { NextPage, GetServerSideProps } from 'next'
 import Head from 'next/head'
 import About from '../components/About/About'
 import Contact from '../components/Contact/Contact'
@@ -10,7 +10,12 @@ import Skills from '../components/Skills/Skills'
 import Layout from '../constants/Layout'
 import Footer from '../constants/Footer';
 
-const Home: NextPage = () => {
+interface Props {
+  data?: any,
+  api: string
+}
+
+const Home: NextPage<Props> = ({ data, api }) => {
   return (
     <div className="container">
       <Head>
@@ -29,12 +34,19 @@ const Home: NextPage = () => {
             <Skills />
             <Offer />
             <Projects />
-            <Contact />
+            <Contact api={api}/>
         </Layout>
       </main>
       <Footer />
     </div>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const res = await fetch(process.env.API + "/api/projects", { method: "GET" })
+  const json = await res.json()
+
+  return { props: { data: json, api: process.env.API } }
 }
 
 export default Home
