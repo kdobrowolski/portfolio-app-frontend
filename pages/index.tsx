@@ -16,6 +16,7 @@ interface Props {
 }
 
 const Home: NextPage<Props> = ({ data, api }) => {
+  const projects = data.projects;
   return (
     <div className="container">
       <Head>
@@ -33,7 +34,7 @@ const Home: NextPage<Props> = ({ data, api }) => {
             <About />
             <Skills />
             <Offer />
-            <Projects />
+            <Projects projects={projects}/>
             <Contact api={api}/>
         </Layout>
       </main>
