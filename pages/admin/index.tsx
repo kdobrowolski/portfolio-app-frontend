@@ -1,4 +1,4 @@
-import type { NextPage } from 'next';
+import type { NextPage, GetServerSideProps } from 'next';
 import Head from 'next/head';
 import SignInForm from '../../components/SignInForm/SignInForm';
 import styled from 'styled-components';
@@ -8,7 +8,11 @@ const StyledMain = styled.main`
     text-align: center;
 `;
 
-const AdminPage: NextPage = () => {
+interface Props {
+    api: string
+}
+
+const AdminPage: NextPage<Props> = ({ api }) => {
     return (
         <div className="container">
             <Head>
@@ -21,10 +25,15 @@ const AdminPage: NextPage = () => {
 
             <StyledMain>
                 <h2>Zaloguj się do panelu administratora</h2>
-                <SignInForm />
+                <SignInForm api={api}/>
             </StyledMain>
         </div>
     )
 }
+
+export const getServerSideProps: GetServerSideProps = async () => {
+
+    return { props: { api: process.env.API } }
+  }
 
 export default AdminPage

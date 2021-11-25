@@ -1,13 +1,43 @@
 import Button from '../Button/Button';
+import { useState } from 'react';
 import { StyledForm } from './styled';
+import axios from 'axios';
 
-export default function SignInForm() {
+interface Props {
+    api: string
+}
+
+export default function SignInForm({ api }: Props) {
+    const [ login, setLogin ] = useState("");
+    const [ password, setPassword ] = useState("");
+
+    const handleSubmit = async (e: any) => {
+        e.preventDefault();
+
+        let body = {
+            login,
+            password
+        }
+        
+        const res = await axios.post(api + "/api/user/signIn", body, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+
+        if(res.data.success) {
+            let token = res.data.token;
+
+            localStorage.setItem("token", token);
+        }
+    }
+
     return (
-        <StyledForm>
+        <StyledForm onSubmit={e => handleSubmit(e)}>
             <label htmlFor="login">Login</label>
-            <input type="text" name="login" placeholder="Wpisz swój login"/>
+            <input type="text" onChange={e => { setLogin(e.currentTarget.value); }} name="login" placeholder="Wpisz swój login"/>
             <label htmlFor="login">Hasło</label>
-            <input type="password" name="password" placeholder="Wpisz swoje hasło"/>
+            <input type="password" onChange={e => { setPassword(e.currentTarget.value); }} name="password" placeholder="Wpisz swoje hasło"/>
             <Button content="Zaloguj się" />
         </StyledForm>
     )
