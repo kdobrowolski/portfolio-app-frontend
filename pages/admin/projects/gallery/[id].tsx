@@ -9,6 +9,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { ImageSchema } from '../../../../utils/yupSchemas';
 import Button from '../../../../components/Button/Button';
 import axios from 'axios';
+import withAuth from '../../../../HOC/withAuth';
 
 const StyledMain = styled.main`
     padding-bottom: 30px;
@@ -84,4 +85,4 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     return { props: { data: json, api: process.env.API } }
 }
 
-export default AdminProjectGallery
+export default withAuth(AdminProjectGallery)

@@ -2,6 +2,7 @@ import type { NextPage, GetServerSideProps } from 'next';
 import Head from 'next/head';
 import SignInForm from '../../components/SignInForm/SignInForm';
 import styled from 'styled-components';
+import withAuth from '../../HOC/withAuth';
 
 const StyledMain = styled.main`
     margin-top: 120px;
@@ -36,4 +37,4 @@ export const getServerSideProps: GetServerSideProps = async () => {
     return { props: { api: process.env.API } }
   }
 
-export default AdminPage
+export default withAuth(AdminPage)

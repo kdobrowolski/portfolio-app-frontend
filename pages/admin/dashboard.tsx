@@ -2,6 +2,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import Button from '../../components/Button/Button';
 import styled from 'styled-components';
+import withAuth from '../../HOC/withAuth';
 
 const StyledMain = styled.main`
     margin-top: 100px;
@@ -31,4 +32,4 @@ const AdminDashboard: NextPage = () => {
     )
 }
 
-export default AdminDashboard
+export default withAuth(AdminDashboard)

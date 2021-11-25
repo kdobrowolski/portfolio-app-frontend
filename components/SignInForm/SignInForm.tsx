@@ -1,4 +1,5 @@
 import Button from '../Button/Button';
+import { useRouter } from "next/router";
 import { useState } from 'react';
 import { StyledForm } from './styled';
 import axios from 'axios';
@@ -8,6 +9,7 @@ interface Props {
 }
 
 export default function SignInForm({ api }: Props) {
+    const Router = useRouter();
     const [ login, setLogin ] = useState("");
     const [ password, setPassword ] = useState("");
 
@@ -29,6 +31,8 @@ export default function SignInForm({ api }: Props) {
             let token = res.data.token;
 
             localStorage.setItem("token", token);
+
+            Router.replace("/admin/dashboard");
         }
     }
 

@@ -11,7 +11,7 @@ interface Props {
 
 export default function Projects({ projects }: Props) {
 
-    function toBase64(project: any) {
+    function toBase64(project: any, i:number) {
         const buffer = project.mainImage.data;
         const images = project.images;
         const b64 = Buffer.from(buffer).toString("base64");
@@ -20,7 +20,7 @@ export default function Projects({ projects }: Props) {
         const [ opened, setOpened ] = useState(false);
 
         return (
-            <div>
+            <div key={i}>
                 <Image height="150px" width="150px" src={`data:${mimeType};base64,${b64}`} />
                 <h2>{project.title}</h2>
                 <p>{project.description}</p>
@@ -41,9 +41,9 @@ export default function Projects({ projects }: Props) {
                     <p>jakie zrobiłem</p>
                 </StyledSectionTitle>
                 <div className="content">
-                    {projects.map((project: any) => {
+                    {projects.map((project: any, i: number) => {
                         return (
-                            toBase64(project)
+                            toBase64(project, i)
                         )
                     })}
                 </div>

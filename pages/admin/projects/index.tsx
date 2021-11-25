@@ -3,6 +3,7 @@ import Head from 'next/head';
 import AdminProject from '../../../components/AdminProject/AdminProject';
 import Button from '../../../components/Button/Button';
 import styled from 'styled-components';
+import withAuth from '../../../HOC/withAuth';
 
 const StyledMain = styled.main`
     text-align: center;
@@ -45,4 +46,4 @@ export const getServerSideProps: GetServerSideProps = async () => {
     return { props: { data: json, api: process.env.API } }
 }
 
-export default AdminProjects
+export default withAuth(AdminProjects)

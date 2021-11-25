@@ -7,6 +7,7 @@ import Button from '../../../components/Button/Button';
 import styled from 'styled-components';
 import { ProjectSchema } from '../../../utils/yupSchemas';
 import axios from 'axios';
+import withAuth from '../../../HOC/withAuth';
 
 const StyledMain = styled.main`
     text-align: center;
@@ -111,4 +112,4 @@ export const getServerSideProps: GetServerSideProps = async () => {
     }
 }
 
-export default AdminProjectAdd
+export default withAuth(AdminProjectAdd)

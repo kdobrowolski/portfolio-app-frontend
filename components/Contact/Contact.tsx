@@ -52,6 +52,7 @@ export default function Contact({ api }: Props) {
     const [ phone, setPhone ] = useState(""); 
     const [ msg, setMsg ] = useState(""); 
     const [ success, setSuccess ] = useState(false);
+    const [ error, setError ] = useState(false);
 
     const { register, handleSubmit, formState:{ errors } } = useForm({
         resolver: yupResolver(ContactSchema),
@@ -71,6 +72,8 @@ export default function Contact({ api }: Props) {
         });
         if(res.data.success) {
             setSuccess(true);
+        } else {
+            setError(true);
         }
     }
     return (
@@ -92,6 +95,7 @@ export default function Contact({ api }: Props) {
                             <textarea {...register('msg')} onChange={e => { setMsg(e.currentTarget.value); }} name="msg" placeholder="Wiadomość" />
                             <p className="error">{errors.msg?.message}</p>
                             <p className={success ? "success": "hidden"}>Wysłano pomyślnie!</p>
+                            <p className={error ? "error": "hidden"}>Wystąpił błąd!</p>
                             <Button content="Wyślij" />
                         </form>
                     </StyledContactForm>
