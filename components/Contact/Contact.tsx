@@ -7,7 +7,6 @@ import Button from '../Button/Button';
 import breakpoint from '../../utils/breakpoints';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from "yup";
 import 'yup-phone';
 import { ContactSchema } from '../../utils/yupSchemas';
 import axios from 'axios';
@@ -47,22 +46,18 @@ interface Props {
 }
 
 export default function Contact({ api }: Props) {
-    const [ name, setName ] = useState(""); 
-    const [ email, setEmail ] = useState(""); 
-    const [ phone, setPhone ] = useState(""); 
-    const [ msg, setMsg ] = useState(""); 
     const [ success, setSuccess ] = useState(false);
     const [ error, setError ] = useState(false);
 
-    const { register, handleSubmit, formState:{ errors } } = useForm({
+    const { register, handleSubmit, formState:{ errors }, getValues } = useForm({
         resolver: yupResolver(ContactSchema),
     });
     const onSubmit = async () => {
         let body = {
-            name,
-            email,
-            tel: phone,
-            msg
+            name: getValues('name'),
+            email: getValues('email'),
+            tel: getValues('phone'),
+            msg: getValues('msg')
         }
 
         const res = await axios.post(api + "/api/user/sendEmail", body, {
@@ -86,13 +81,13 @@ export default function Contact({ api }: Props) {
                 <div className="content">
                     <StyledContactForm>
                         <form onSubmit={handleSubmit(onSubmit)}>
-                            <input {...register('name')} onChange={e => { setName(e.currentTarget.value); }} type="text" name="name" placeholder="Imię i nazwisko"/>
+                            <input {...register('name')} type="text" name="name" placeholder="Imię i nazwisko"/>
                             <p className="error">{errors.name?.message}</p>
-                            <input {...register('email')} onChange={e => { setEmail(e.currentTarget.value); }} type="email" name="email" placeholder="Adres email"/>
+                            <input {...register('email')} type="email" name="email" placeholder="Adres email"/>
                             <p className="error">{errors.email?.message}</p>
-                            <input {...register('phone')} onChange={e => { setPhone(e.currentTarget.value); }} type="text" name="phone" placeholder="Numer telefonu"/>
+                            <input {...register('phone')} type="text" name="phone" placeholder="Numer telefonu"/>
                             <p className="error">{errors.phone?.message}</p>
-                            <textarea {...register('msg')} onChange={e => { setMsg(e.currentTarget.value); }} name="msg" placeholder="Wiadomość" />
+                            <textarea {...register('msg')} name="msg" placeholder="Wiadomość" />
                             <p className="error">{errors.msg?.message}</p>
                             <p className={success ? "success": "hidden"}>Wysłano pomyślnie!</p>
                             <p className={error ? "error": "hidden"}>Wystąpił błąd!</p>

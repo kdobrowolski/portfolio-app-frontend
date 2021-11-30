@@ -29,6 +29,7 @@ const StyledMain = styled.main`
         }
         .error {
             color: red;
+            display: block !important;
         }
     }
 
@@ -40,6 +41,7 @@ const StyledMain = styled.main`
         color: green;
         display: block !important;
     }
+
 `;
 
 interface Props {
@@ -49,29 +51,29 @@ interface Props {
 const AdminProjectEdit: NextPage<Props> = ({ api }) => {
     const router = useRouter()
     const { id } = router.query;
-    const [title, setTitle] = useState("");
-    const [desc, setDesc] = useState("");
-    const [date, setDate] = useState("");
-    const [mainImage, setMainImage] = useState("");
     const [success, setSuccess] = useState(false);
+    const [error, setError] = useState(false);
 
-    const { register, handleSubmit, formState: { errors } } = useForm({
+    const { register, handleSubmit, formState: { errors }, getValues } = useForm({
         resolver: yupResolver(ProjectSchema)
     })
 
     const onSubmit = async () => {
         const formData = new FormData();
-        formData.append('title', title);
-        formData.append('description', desc);
-        formData.append('date', date);
-        formData.append('mainImage', mainImage);
+        formData.append('title', getValues('name'));
+        formData.append('description', getValues('description'));
+        formData.append('date', getValues('date'));
+        formData.append('mainImage', getValues('image')[0]);
         const res = await axios.put(api + "/api/projects/" + id, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
               }
         })
+        console.log(res);
         if(res.data.success) {
             setSuccess(true);
+        } else {
+            setError(true);
         }
     }
 
@@ -90,18 +92,19 @@ const AdminProjectEdit: NextPage<Props> = ({ api }) => {
                 <p></p>
                 <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
                     <label htmlFor="name">Nazwa projektu</label>
-                    <input {...register('name')} onChange={e => { setTitle(e.currentTarget.value); }} id="title" type="text" name="name" />
+                    <input {...register('name')} id="title" type="text" name="name" />
                     <p className="error">{errors.name?.message}</p>
                     <label htmlFor="description">Opis projektu</label>
-                    <textarea {...register('description')} onChange={e => { setDesc(e.currentTarget.value); }} id="desc" name="description" />
+                    <textarea {...register('description')} id="desc" name="description" />
                     <p className="error">{errors.description?.message}</p>
                     <label htmlFor="date">Data projektu</label>
-                    <input {...register('date')} onChange={e => { setDate(e.currentTarget.value); }} id="date" type="date" name="date"/>
+                    <input {...register('date')} id="date" type="date" name="date"/>
                     <p className="error">{errors.date?.message}</p>
                     <label htmlFor="image">Główne zdjęcie</label>
-                    <input {...register('image')} onChange={e => { setMainImage(e.currentTarget.files[0]); }} id="mainImage" type="file" name="image"/>
+                    <input {...register('image')} id="mainImage" type="file" name="image"/>
                     <p className="error">{errors.image?.message}</p>
                     <p className={success ? "success" : "hidden"}>Edycja powiodła się!</p>
+                    <p className={error ? "error": "hidden"}>Wystąpił błąd!</p>
                     <Button content="Zmień" />
                 </form>
                 <Button route="/admin/projects" content="Wróć" />

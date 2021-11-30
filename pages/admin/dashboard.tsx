@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Button from '../../components/Button/Button';
 import styled from 'styled-components';
@@ -13,6 +14,13 @@ const StyledMain = styled.main`
 `;
 
 const AdminDashboard: NextPage = () => {
+    const Router = useRouter();
+
+    const logout = () => {
+        localStorage.removeItem('token');
+
+        Router.replace('/admin');
+    }
     return (
         <div className="container">
             <Head>
@@ -26,7 +34,7 @@ const AdminDashboard: NextPage = () => {
             <StyledMain>
                 <h2>Admin panel</h2>
                 <Button route="/admin/projects" content="Zarządzaj projektami" />
-                <Button content="Wyloguj się" />
+                <Button content="Wyloguj się" onClickFunction={logout}/>
             </StyledMain>
         </div>
     )

@@ -18,11 +18,11 @@ interface Props {
     image: any,
     itemID: string,
     api: string,
-    projectID: string
+    projectID: any
 }
 
-export default function GalleryImage({ image, itemID, projectID, api }: Props) {
-    console.log(image);
+export default function GalleryImage({ image, itemID, api, projectID }: Props) {
+    console.log(projectID);
     const buffer = image.image.data;
     const b64 = Buffer.from(buffer).toString("base64");
     const mimeType = 'image/png';

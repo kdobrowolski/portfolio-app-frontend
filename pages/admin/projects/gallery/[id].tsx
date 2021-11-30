@@ -18,6 +18,10 @@ const StyledMain = styled.main`
     form {
         .error {
             color: red;
+            display: block !important;
+        }
+        .hidden {
+            display: none;
         }
     }
 `;
@@ -30,16 +34,16 @@ interface Props {
 const AdminProjectGallery: NextPage<Props> = ({ api, data }) => {
     const router = useRouter()
     const { id } = router.query
-    const [ image, setImage ] = useState('');
     const images = data.images;
+    const [ error, setError ] = useState(false);
 
-    const { register, handleSubmit, formState: { errors } } = useForm({
+    const { register, handleSubmit, formState: { errors }, getValues } = useForm({
         resolver: yupResolver(ImageSchema)
     })
 
     const onSubmit = async () => {
         const formData = new FormData();
-        formData.append('image', image);
+        formData.append('mainImage', getValues('image')[0]);
         const res = await axios.post(api + "/api/projects/" + id + "/images", formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
@@ -47,6 +51,8 @@ const AdminProjectGallery: NextPage<Props> = ({ api, data }) => {
         })
         if(res.data.success) {
             window.location.reload();
+        } else {
+            setError(true);
         }
     }
 
@@ -63,8 +69,9 @@ const AdminProjectGallery: NextPage<Props> = ({ api, data }) => {
             <StyledMain>
                 <h2>Dodaj zdjęcie</h2>
                 <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
-                    <input {...register('image')} onChange={e => { setImage(e.currentTarget.files[0]); }} type="file" name="image"/>
+                    <input {...register('image')} type="file" name="image"/>
                     <p className="error">{errors.image?.message}</p>
+                    <p className={error ? "error": "hidden"}>Wystąpił błąd!</p>
                     <Button content="Dodaj" />
                 </form>
                 <h2>Galeria</h2>

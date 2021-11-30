@@ -23,6 +23,15 @@ export const StyledForm = styled.form`
         text-align: left;
     }
 
+    .error {
+        color: red;
+        display: block !important;
+    }
+
+    .hidden {
+        display: none;
+    }
+
     @media only screen and ${breakpoint.device.sm} {
         width: 50%;
     }

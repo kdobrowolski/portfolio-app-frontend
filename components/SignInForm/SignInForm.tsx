@@ -12,6 +12,7 @@ export default function SignInForm({ api }: Props) {
     const Router = useRouter();
     const [ login, setLogin ] = useState("");
     const [ password, setPassword ] = useState("");
+    const [ error, setError ] = useState(false);
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
@@ -33,6 +34,8 @@ export default function SignInForm({ api }: Props) {
             localStorage.setItem("token", token);
 
             Router.replace("/admin/dashboard");
+        } else {
+            setError(true);
         }
     }
 
@@ -42,6 +45,7 @@ export default function SignInForm({ api }: Props) {
             <input type="text" onChange={e => { setLogin(e.currentTarget.value); }} name="login" placeholder="Wpisz swój login"/>
             <label htmlFor="login">Hasło</label>
             <input type="password" onChange={e => { setPassword(e.currentTarget.value); }} name="password" placeholder="Wpisz swoje hasło"/>
+            <p className={error ? "error" : "hidden"}>Nieprawidłowy login lub hasło!</p>
             <Button content="Zaloguj się" />
         </StyledForm>
     )
