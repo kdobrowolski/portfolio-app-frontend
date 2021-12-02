@@ -1,7 +1,29 @@
 import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import { useState, useEffect } from 'react';
+import { useRouter } from "next/router";
+import Loading from '../components/Loading/Loading';
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+interface Props {
+  Component: any,
+  pageProps: any
 }
-export default MyApp
+
+function MyApp({ Component, pageProps }: Props) {
+  const router = useRouter();
+  const [loading, setLoading] = useState(true);
+  
+  useEffect(() => {
+      setTimeout(() => {
+        setLoading(false);
+      }, 300)
+    });
+  
+    return (
+      <>
+            <Loading loading={loading} />  
+            <Component {...pageProps} />
+      </>
+    );
+  }
+  
+  export default MyApp;
