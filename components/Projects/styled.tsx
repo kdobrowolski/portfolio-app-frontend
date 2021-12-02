@@ -17,6 +17,11 @@ export const StyledProjects = styled.section`
             padding-bottom: 30px;
             text-align: center;
             color: #6c6c6c;
+
+            .center {
+                width: 100%;
+                text-align: center;
+            }
             
             & > div {
                 width: 270px;

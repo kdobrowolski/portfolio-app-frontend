@@ -33,6 +33,7 @@ const AdminProjects: NextPage<Props> = ({ data, api }) => {
                 {projects.map((project: any, i: number) => {
                     return (<AdminProject key={i} itemID={project._id} title={project.title} desc={project.description} date={project.date} image={project.mainImage} api={api}/>)
                 })}
+                <br />
                 <Button route="/admin/dashboard" content="Wróć"/>
             </StyledMain>
         </div>

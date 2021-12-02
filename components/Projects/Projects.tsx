@@ -10,7 +10,6 @@ interface Props {
 }
 
 export default function Projects({ projects }: Props) {
-
     function toBase64(project: any, i:number) {
         const buffer = project.mainImage.data;
         const images = project.images;
@@ -18,6 +17,7 @@ export default function Projects({ projects }: Props) {
         const mimeType = 'image/png';
 
         const [ opened, setOpened ] = useState(false);
+
 
         return (
             <div key={i}>
@@ -46,6 +46,7 @@ export default function Projects({ projects }: Props) {
                             toBase64(project, i)
                         )
                     })}
+                    { projects.length < 1 ? <p className="center">Brak projektów</p> : null}
                 </div>
             </div>
         </StyledProjects>
