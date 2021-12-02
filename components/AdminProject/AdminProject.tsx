@@ -27,7 +27,7 @@ export default function AdminProject({ itemID, title, desc, image, date, api }: 
     }
     return (
         <StyledProjectContainer>
-            <Image height="200px" width="200px" src={`data:${mimeType};base64,${b64}`} />
+            <Image height="200px" width="200px" src={`data:${mimeType};base64,${b64}`} alt="Project image"/>
             <h3>{ title }</h3>
             <p>{ desc }</p>
             <p>{ date }</p>

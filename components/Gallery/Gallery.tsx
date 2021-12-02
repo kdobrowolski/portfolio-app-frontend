@@ -1,3 +1,4 @@
+import Image from 'next/image';
 
 interface Props {
     images?: any,
@@ -11,7 +12,7 @@ export default function Gallery({ images, opened }: Props) {
         const b64 = Buffer.from(buffer).toString("base64");
         const mimeType = 'image/png';
 
-        return (<img key={i} src={`data:${mimeType};base64,${b64}`} />)
+        return (<Image key={i} src={`data:${mimeType};base64,${b64}`} alt="Gallery image"/>)
     }
     return (
         <div className={opened ? "opened" : "hidden"}>

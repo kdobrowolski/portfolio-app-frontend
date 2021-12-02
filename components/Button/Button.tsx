@@ -11,7 +11,7 @@ type Props = {
 
 export default function Button({ content, toScroll, route, onClickFunction }: Props) {
     if(route) {
-        return <Link href={route}>
+        return <Link href={route} passHref>
             <StyledButton> {content} </StyledButton>
         </Link>
     }

@@ -10,18 +10,17 @@ interface Props {
 }
 
 export default function Projects({ projects }: Props) {
+    const [ opened, setOpened ] = useState(false);
+    
     function toBase64(project: any, i:number) {
         const buffer = project.mainImage.data;
         const images = project.images;
         const b64 = Buffer.from(buffer).toString("base64");
         const mimeType = 'image/png';
 
-        const [ opened, setOpened ] = useState(false);
-
-
         return (
             <div key={i}>
-                <Image height="150px" width="150px" src={`data:${mimeType};base64,${b64}`} />
+                <Image height="150px" width="150px" src={`data:${mimeType};base64,${b64}`} alt="Project image"/>
                 <h2>{project.title}</h2>
                 <p>{project.description}</p>
                 <p>{project.date}</p>

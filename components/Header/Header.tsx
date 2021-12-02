@@ -12,7 +12,7 @@ export default function Header() {
                 <Button content="Zapoznaj się" toScroll="about"/>
             </StyledBanner>
             <div className="banner-image">
-                <Image src="/images/devices.png" width="350" height="350"/>
+                <Image src="/images/devices.png" width="350" height="350" alt="Header image"/>
             </div>
         </StyledHeader>
     )

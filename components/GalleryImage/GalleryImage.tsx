@@ -37,7 +37,7 @@ export default function GalleryImage({ image, itemID, api, projectID }: Props) {
 
     return (
         <StyledDiv className="gallery-image">
-            <Image height="200px" width="200px" src={`data:${mimeType};base64,${b64}`} />
+            <Image height="200px" width="200px" src={`data:${mimeType};base64,${b64}`} alt="Gallery image"/>
             <Button content="Usuń" onClickFunction={deleteImage}/>
         </StyledDiv>
     )

@@ -12,7 +12,7 @@ export default function Offer() {
                 </StyledSectionTitle>
                 <div className="offerElement">
                     <div className="offer-image">
-                        <Image src="/images/coding.png" width="150px" height="150px"/>
+                        <Image src="/images/coding.png" width="150px" height="150px" alt="Offer image"/>
                     </div>
                     <div className="offer-content">
                         <h3>Wdroże Twój projekt strony internetowej</h3>
@@ -21,7 +21,7 @@ export default function Offer() {
                 </div>
                 <div className="offerElement">
                     <div className="offer-image">
-                        <Image className="offer-image" src="/images/search-engine.png" width="150px" height="150px"/>
+                        <Image className="offer-image" src="/images/search-engine.png" width="150px" height="150px" alt="Offer image"/>
                     </div>
                     <div className="offer-content">
                         <h3>Zadbam o SEO Twojej strony internetowej</h3>
@@ -30,7 +30,7 @@ export default function Offer() {
                 </div>
                 <div className="offerElement">
                     <div className="offer-image">
-                        <Image src="/images/devices.png" width="150px" height="150px"/>
+                        <Image src="/images/devices.png" width="150px" height="150px" alt="Offer image"/>
                     </div>
                     <div className="offer-content">
                         <h3>Responsywność aplikacji internetowej</h3>
